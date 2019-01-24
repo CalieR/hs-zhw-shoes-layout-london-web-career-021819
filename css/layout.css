@@ -1,15 +1,16 @@
 /********** Fixes **********/
 
 * {
-  margin:0;
-  padding:0;
-  border:0;
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; /* IE version, includes padding */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
 .clearfix:after {
+  /* to stop the parent collapsing */
   content: ".";
   display: block;
   clear: both;
@@ -19,9 +20,31 @@
 }
 
 .clear {
-  clear: both;
+  clear: both; /* no floating elements allowed on either the left or the right side */
+  margin-bottom: 2%; /* add a gap between each row */
+}
+
+img {
+  max-width: 100%; /* keep the images fluid so they don't exceed their parent container (column) */
 }
 
 /* Positioning Classes */
 
+.col-1 {
+  /* for sections 1/3 of the width */
+  width: 32%; /* to allow 2% of space between each */
+}
 
+.col-2 {
+  /* for sections 2/3 of the width */
+  width: 66%;
+}
+
+[class*="col-"] {
+  float: left; /* needs to float to sit next to another column */
+  margin-left: 2%; /* to make the space between columns */
+}
+
+.first {
+  margin-left: 0; /* don't want any space on the left of the first column */
+}
